@@ -1,0 +1,195 @@
+/*
+    Title: CSS for Policy Editor
+    Scope: Screen
+    Author: Daniel Wiltshire
+*/
+
+body {
+    margin: 0;
+    font-family: 'PT Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#wrapper {
+    display: flex;
+}
+
+#sidebar {
+    background-color: #336699;
+    width: 100px;
+    height: 100vh;
+    flex: none;
+}
+
+#header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+#header .f-p-left {
+    display: flex;
+    align-items: center;
+}
+
+#header .f-p-right {
+    display: flex;
+    align-items: center;
+}
+
+#header h1 {
+    display: block;
+    margin: 0 30px 0 0;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+#header .picker-dropdown {
+    background: url(img/pe-dropdown-arrow.png) no-repeat 100% 75%;
+    padding: 0 20px 0 0;
+}
+
+#header .picker-dropdown span {
+    font-size: 14px;
+    color: #999999;
+    margin: 0;
+}
+
+#header .picker-dropdown p {
+    font-size: 18px;
+    color: #666666;
+    margin: 0;
+}
+
+#header .button-dropdown {
+    margin: 0 30px;
+}
+
+#header .button-dropdown button {
+    border: 1px solid #999999;
+    border-radius: 2px;
+    padding: 6px 30px 6px 10px;
+    font-size: 16px;
+    color: #666;
+    background: white url(img/pe-dropdown-arrow.png) no-repeat right 10px center;    
+}
+
+#nav-sub {
+    border-bottom: 1px solid #CCCCCC;
+    padding: 0 0 0 30px;
+}
+
+#nav-sub ul {
+    padding: 0;
+    margin: 0;
+}
+
+#nav-sub ul li {
+    list-style-type: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 40px 0 0;
+}
+
+#nav-sub ul li.nav-sub-current {
+    font-weight: 700;
+}
+
+#nav-sub ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 3px 0;
+}
+
+#nav-sub ul li.current-page-item a {
+    border-bottom: 3px solid #336699;
+}
+
+#nav-sub ul li a:link { color: #999999; }
+#nav-sub ul li a:visited { color: #999999; }
+#nav-sub ul li a:hover { color: #999999; }
+#nav-sub ul li a:active { color: #999999; }
+
+#nav-sub ul li.current-page-item a:link { color: #336699; }
+#nav-sub ul li.current-page-item a:visited { color: #336699; }
+#nav-sub ul li.current-page-item a:hover { color: #336699; }
+#nav-sub ul li.current-page-item a:active { color: #336699; }
+
+#buttons {
+    height: 60px;
+    border-bottom: 1px solid #CCCCCC;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 30px;
+}
+
+#buttons button {
+    border: none;
+    border-radius: 2px;
+    padding: 6px 10px 6px 30px;
+    font-size: 16px;
+    color: white;
+    background-color: #336699;
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+    margin: 0 20px 0 0;
+}
+
+#buttons .button-delete { background-image: url(img/button-delete.png); }
+#buttons .button-test { background-image: url(img/button-test.png); }
+#buttons .button-export { background-image: url(img/button-export.png); }
+
+#main {
+    width: 100%;
+}
+
+.t-r {
+    text-align: right;
+}
+
+#sidebar ul {
+    margin: 20px 0 0 0;
+    padding: 0;
+}
+
+#sidebar ul li {
+    list-style-type: none;
+    text-align: center;
+    font-size: 16px;
+    margin: 0 0 30px 0;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+}
+
+#sidebar ul li:first-child {
+    margin: 0 0 18px 0;
+}
+
+#sidebar ul li.current-page-item {
+    font-weight: bold;
+}
+
+#sidebar ul li.sidebar-logo { background-image: url(img/sidebar-logo.png); }
+#sidebar ul li.sidebar-policies { background-image: url(img/sidebar-policies.png); }
+#sidebar ul li.sidebar-networks { background-image: url(img/sidebar-networks.png); }
+#sidebar ul li.sidebar-endpoints { background-image: url(img/sidebar-endpoints.png); }
+#sidebar ul li.sidebar-settings { background-image: url(img/sidebar-settings.png); }
+
+#sidebar ul li a {
+    text-decoration: none;
+    display: block;
+    padding: 45px 0 0 0;
+}
+
+#sidebar ul li a:link { color: #CCCCCC; }
+#sidebar ul li a:visited { color: #CCCCCC; }
+#sidebar ul li a:hover { color: #CCCCCC; }
+#sidebar ul li a:active { color: #CCCCCC; }
+
+#sidebar ul li.current-page-item a:link { color: #FFFFFF; }
+#sidebar ul li.current-page-item a:visited { color: #FFFFFF; }
+#sidebar ul li.current-page-item a:hover { color: #FFFFFF; }
+#sidebar ul li.current-page-item a:active { color: #FFFFFF; }

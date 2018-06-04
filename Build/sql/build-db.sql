@@ -1,0 +1,84 @@
+CREATE TABLE `danielwi4_pe`.`PolicyEntries` (
+    `ID` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Comment` VARCHAR(100) NOT NULL,
+    `SrcNetwork` INT(11) UNSIGNED NOT NULL,
+    `DstNetwork` INT(11) UNSIGNED NOT NULL,
+    `InternetProtocol` INT(11) UNSIGNED NOT NULL,
+    `SrcPorts` INT(11) UNSIGNED NOT NULL,
+    `DstPorts` INT(11) UNSIGNED NOT NULL,
+    `Action` BOOLEAN NOT NULL,
+    PRIMARY KEY (`ID`)
+) ENGINE = InnoDB;
+
+CREATE TABLE `danielwi4_pe`.`Policies` (
+    `ID` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Name` VARCHAR(64) NOT NULL,
+    PRIMARY KEY (`ID`)
+) ENGINE = InnoDB;
+
+CREATE TABLE `danielwi4_pe`.`Policies-PolicyEntries` (
+    `PolicyEntryID` INT(11) UNSIGNED NOT NULL,
+    `PolicyID` INT(11) UNSIGNED NOT NULL,
+    PRIMARY KEY (`PolicyEntryID`,`PolicyID`)
+) ENGINE = InnoDB;
+
+CREATE TABLE `danielwi4_pe`.`NetworksEndpoints` (
+    `ID` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Name` VARCHAR(64) NOT NULL,
+    `Network` VARBINARY(16) NOT NULL,
+    `CIDRMask` INTEGER(2) UNSIGNED,
+    PRIMARY KEY (`ID`)
+) ENGINE = InnoDB;
+
+CREATE TABLE `danielwi4_pe`.`InternetProtocols` (
+    `ID` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Name` VARCHAR(4) NOT NULL,
+    PRIMARY KEY (`ID`)
+) ENGINE = InnoDB;
+
+CREATE TABLE `danielwi4_pe`.`Ports` (
+    `ID` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Start` INT(5) UNSIGNED NOT NULL,
+    `End` INT(5) UNSIGNED NOT NULL,
+    PRIMARY KEY (`ID`)
+) ENGINE = InnoDB;
+
+ALTER TABLE `Policies-PolicyEntries`
+ADD CONSTRAINT PolicyEntryID
+FOREIGN KEY (PolicyEntryID) REFERENCES PolicyEntries(ID)
+ON DELETE CASCADE;
+
+ALTER TABLE `Policies-PolicyEntries`
+ADD CONSTRAINT PolicyID
+FOREIGN KEY (PolicyID) REFERENCES Policies(ID)
+ON DELETE CASCADE;
+
+ALTER TABLE `PolicyEntries`
+ADD CONSTRAINT SrcNetwork
+FOREIGN KEY (SrcNetwork) REFERENCES NetworksEndpoints(ID)
+ON DELETE CASCADE;
+
+ALTER TABLE `PolicyEntries`
+ADD CONSTRAINT DstNetwork
+FOREIGN KEY (DstNetwork) REFERENCES NetworksEndpoints(ID)
+ON DELETE CASCADE;
+
+ALTER TABLE `PolicyEntries`
+ADD CONSTRAINT InternetProtocol
+FOREIGN KEY (InternetProtocol) REFERENCES InternetProtocols(ID)
+ON DELETE CASCADE;
+
+ALTER TABLE `PolicyEntries`
+ADD CONSTRAINT SrcPorts
+FOREIGN KEY (SrcPorts) REFERENCES Ports(ID)
+ON DELETE CASCADE;
+
+ALTER TABLE `PolicyEntries`
+ADD CONSTRAINT DstPorts
+FOREIGN KEY (DstPorts) REFERENCES Ports(ID)
+ON DELETE CASCADE;
+
+INSERT INTO InternetProtocols (Name) VALUES ("TCP");
+INSERT INTO InternetProtocols (Name) VALUES ("UDP");
+
+INSERT INTO NetworksEndpoints (Network,CIDRMask) VALUES (INET6_ATON('0.0.0.0'),'0');
